@@ -1,6 +1,6 @@
 const api = {
   jobs: {
-    all: "",
+    all: "jobs",
   },
 };
 
