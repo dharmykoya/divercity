@@ -1,18 +1,26 @@
 import PropTypes from "prop-types";
 
-const Button = ({ buttonText, handleClick }) => (
+const Button = ({
+  buttonText, submitType, handleClick, customClass,
+}) => (
   <button
     onClick={handleClick}
-    className="bg-blue-500 text-white text-base font-bold px-6 py-2 rounded-lg"
-    type="button"
+    className={customClass}
+    type={submitType ? "submit" : "button"}
   >
     {buttonText}
   </button>
 );
 
+Button.defaultProps = {
+  submitType: false,
+};
+
 Button.propTypes = {
   buttonText: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
+  customClass: PropTypes.string.isRequired,
+  submitType: PropTypes.bool,
 };
 
 export default Button;

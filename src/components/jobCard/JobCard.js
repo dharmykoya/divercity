@@ -51,7 +51,11 @@ const JobCard = ({
     </div>
 
     <div className="text-right">
-      <Button buttonText="Apply" handleClick={() => {}} />
+      <Button
+        buttonText="Apply"
+        handleClick={() => {}}
+        customClass="bg-blue-500 text-white text-base font-bold px-6 py-3 rounded-lg"
+      />
     </div>
   </div>
 );

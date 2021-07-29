@@ -10,7 +10,7 @@ test("handles clicks event", async () => {
   const handleClick = jest.fn();
 
   const { getByText } = render(
-    <Button buttonText={CURRENT} handleClick={handleClick} />,
+    <Button buttonText={CURRENT} handleClick={handleClick} customClass="h-32" />,
   );
 
   const element = getByText(CURRENT);
