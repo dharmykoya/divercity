@@ -25,6 +25,6 @@ test("handles clicks event on search component", async () => {
   fireEvent.change(inputElement, { target: { value: "dev" } });
   fireEvent.submit(element);
 
-  // expect(handleSearchChange).toBeCalledWith("dev");
+  expect(handleSearchChange).toHaveBeenCalled();
   expect(handleClick).toHaveBeenCalled();
 });
