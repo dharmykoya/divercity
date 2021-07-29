@@ -10,6 +10,7 @@ body {
 .App {
   width: 80%;
   margin: auto;
+  max-width: 1500px;
 }
 
 .App-logo {
