@@ -1,10 +1,18 @@
+:root {
+  font-size: 62.5%;
+  font-family: "Poppins" !important;
+}
+
+body {
+  font-size: 1.3rem;
+}
+
 .App {
-  text-align: center;
+  width: 80%;
+  margin: auto;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
-
