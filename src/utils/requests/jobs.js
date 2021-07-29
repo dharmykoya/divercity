@@ -1,6 +1,6 @@
 import api from "../constants/api";
-import { get$, post$, delete$ } from "./index";
+import { get$ } from "./index";
 
-export const allProjects = (queryString = "") => {
-  return get$(api.jobs.all);
-};
+export const allJobs = () => get$(api.jobs.all);
+
+export const singleJob = () => get$(api.jobs.all);
