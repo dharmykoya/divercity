@@ -40,7 +40,8 @@ const JobCard = ({
       </div>
       <div className="flex items-center">
         <PaperClipIcon className="h-5 w-5 text-black mr-2" />
-        <span>{applicantCount}</span>
+        <span className="mr-2">{applicantCount}</span>
+        applications
       </div>
       <div className="flex items-center">
         <div>
