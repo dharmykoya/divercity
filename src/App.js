@@ -7,8 +7,8 @@ import AllJobs from "./views/jobs/AllJobs";
 function App() {
   return (
     <Router>
+      <Navbar />
       <div className="App">
-        <Navbar />
         <Switch>
           <Route path="/">
             <AllJobs />
