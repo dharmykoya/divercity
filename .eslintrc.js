@@ -24,5 +24,7 @@ module.exports = {
     checkContextTypes: [0],
     "react/forbid-prop-types": "off",
     "react/jsx-props-no-spreading": "off",
+    "implicit-arrow-linebreak": "off",
+    "no-shadow": "off",
   },
 };

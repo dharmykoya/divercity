@@ -11,23 +11,26 @@ const initialState = {
   error: null,
 };
 
-const fetchJobsStart = (state) => updateObject(state, {
-  loading: true,
-  error: null,
-});
+const fetchJobsStart = (state) =>
+  updateObject(state, {
+    loading: true,
+    error: null,
+  });
 
-const fetchJobsSuccess = (state, action) => updateObject(state, {
-  loading: false,
-  jobs: action.jobs,
-  error: null,
-});
+const fetchJobsSuccess = (state, action) =>
+  updateObject(state, {
+    loading: false,
+    jobs: action.jobs,
+    error: null,
+  });
 
-const fetchJobsFail = (state, action) => updateObject(state, {
-  error: action.error,
-  loading: false,
-});
+const fetchJobsFail = (state, action) =>
+  updateObject(state, {
+    error: action.error,
+    loading: false,
+  });
 
-const projects = (state = initialState, action) => {
+const jobs = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_JOBS_START:
       return fetchJobsStart(state, action);
@@ -40,4 +43,4 @@ const projects = (state = initialState, action) => {
   }
 };
 
-export default projects;
+export default jobs;
