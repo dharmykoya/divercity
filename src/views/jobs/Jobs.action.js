@@ -7,6 +7,7 @@ import {
   APPLY_TO_JOB_SUCCESS,
   APPLY_TO_JOB_FAIL,
 } from "../../store/actionTypes";
+import { toastSuccess } from "../../utils/helpers/helper";
 
 export const fetchJobsStart = () => ({
   type: FETCH_JOBS_START,
@@ -77,7 +78,8 @@ export const jobApplication = (jobId, details) => async (dispatch) => {
     .then(async (response) => {
       dispatch(jobApplicationSuccess(response.jobs));
     })
-    .catch((error) => {
+    .catch(() => {
+      toastSuccess("Project removed from archive");
       dispatch(jobApplicationFailed("error"));
     });
 };

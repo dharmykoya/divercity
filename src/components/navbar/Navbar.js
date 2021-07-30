@@ -66,10 +66,16 @@ const Navbar = () => {
               </>
             ) : (
               <div className="grid lg:flex lg:ml-5">
-                <Link to="/login" className="my-3 lg:mx-5">
+                <Link to="/" className="my-3 lg:mx-5 hover:text-blue-500">
+                  Home
+                </Link>
+                <Link to="/login" className="my-3 lg:mx-5 hover:text-blue-500">
                   Login
                 </Link>
-                <Link to="/register" className="my-3 lg:ml-5">
+                <Link
+                  to="/register"
+                  className="my-3 lg:ml-5 hover:text-blue-500"
+                >
                   Register
                 </Link>
               </div>

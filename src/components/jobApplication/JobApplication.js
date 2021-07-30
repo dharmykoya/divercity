@@ -7,6 +7,7 @@ import {
   BriefcaseIcon,
   PaperClipIcon,
 } from "@heroicons/react/outline";
+import { Link } from "react-router-dom";
 import Button from "../button/Button";
 
 const JobApplication = ({
@@ -17,6 +18,7 @@ const JobApplication = ({
   handleBlur,
   handleChange,
   errors,
+  isAuthenticated,
 }) => {
   const {
     id,
@@ -65,60 +67,72 @@ const JobApplication = ({
         dangerouslySetInnerHTML={{ __html: description }}
         className="border py-8 px-3 mt-5 rounded-lg"
       />
-      <div className="mt-8">
-        <label htmlFor="coverLetter" aria-controls="4" className="">
-          Cover letter
-        </label>
-        <textarea
-          name="coverLetter"
-          id="coverLetter"
-          className="border px-2 w-full mt-4"
-          rows="4"
-          value={values?.coverLetter}
-          onChange={(e) => handleChange(e)}
-          onBlur={handleBlur}
-        />
-        <div className="text-red-500">
-          {errors && errors.coverLetter?.length ? (
-            <p>cover letter is required</p>
-          ) : (
-            ""
-          )}
+      {isAuthenticated ? (
+        <>
+          <div className="mt-8">
+            <label htmlFor="coverLetter" aria-controls="4" className="">
+              Cover letter
+            </label>
+            <textarea
+              name="coverLetter"
+              id="coverLetter"
+              className="border px-2 w-full mt-4"
+              rows="4"
+              value={values?.coverLetter}
+              onChange={(e) => handleChange(e)}
+              onBlur={handleBlur}
+            />
+            <div className="text-red-500">
+              {errors && errors.coverLetter?.length ? (
+                <p>cover letter is required</p>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+          <div className="mt-8">
+            <label htmlFor="coverLetter" aria-controls="4" className="">
+              Motivation letter
+            </label>
+            <textarea
+              name="motivation"
+              id="motivation"
+              className="border px-2 w-full mt-4"
+              rows="4"
+              value={values?.motivation}
+              onChange={(e) => handleChange(e)}
+              onBlur={handleBlur}
+            />
+            <div className="text-red-500">
+              {errors && errors.motivation?.length ? (
+                <p>{errors.motivation}</p>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+          <div className="mt-10 mb-2 text-right">
+            <Button
+              buttonText="Cancel"
+              handleClick={closeModalHandler}
+              customClass="bg-red-500 text-white text-base font-bold px-6 py-3 mr-4 rounded-lg"
+            />
+            <Button
+              buttonText="Apply"
+              handleClick={(e) => submitApplicationHandler(e, id)}
+              customClass="bg-blue-500 text-white text-base font-bold px-6 py-3 rounded-lg"
+            />
+          </div>
+        </>
+      ) : (
+        <div className="my-6 text-center text-2xl">
+          Please
+          {" "}
+          <Link to="/login" className="text-blue-500">Login</Link>
+          {" "}
+          to apply for this position.
         </div>
-      </div>
-      <div className="mt-8">
-        <label htmlFor="coverLetter" aria-controls="4" className="">
-          Motivation letter
-        </label>
-        <textarea
-          name="motivation"
-          id="motivation"
-          className="border px-2 w-full mt-4"
-          rows="4"
-          value={values?.motivation}
-          onChange={(e) => handleChange(e)}
-          onBlur={handleBlur}
-        />
-        <div className="text-red-500">
-          {errors && errors.motivation?.length ? (
-            <p>{errors.motivation}</p>
-          ) : (
-            ""
-          )}
-        </div>
-      </div>
-      <div className="mt-10 mb-2 text-right">
-        <Button
-          buttonText="Cancel"
-          handleClick={closeModalHandler}
-          customClass="bg-red-500 text-white text-base font-bold px-6 py-3 mr-4 rounded-lg"
-        />
-        <Button
-          buttonText="Apply"
-          handleClick={(e) => submitApplicationHandler(e, id)}
-          customClass="bg-blue-500 text-white text-base font-bold px-6 py-3 rounded-lg"
-        />
-      </div>
+      )}
     </div>
   );
 };
@@ -131,6 +145,7 @@ JobApplication.propTypes = {
   errors: PropTypes.object.isRequired,
   handleBlur: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 export default JobApplication;
