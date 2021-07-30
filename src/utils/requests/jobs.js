@@ -1,5 +1,5 @@
 import api from "../constants/api";
-import { get$ } from "./index";
+import { get$ } from "./default";
 
 export const allJobs = () => get$(api.jobs.all);
 
