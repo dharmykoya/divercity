@@ -1,15 +1,15 @@
 :root {
   font-size: 62.5%;
-  font-family: "Poppins" !important;
+  font-family: 'Poppins' !important;
 }
 
 body {
   font-size: 1.3rem;
-  background-color: #FAFBFC;
+  background-color: #fafbfc;
 }
 
 .App {
-  width: 80%;
+  width: 90%;
   margin: auto;
   max-width: 1500px;
 }
@@ -17,4 +17,10 @@ body {
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+@media only screen and (min-width: 1024px) {
+  .App {
+    width: 80%;
+  }
 }

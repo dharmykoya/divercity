@@ -26,5 +26,6 @@ module.exports = {
     "react/jsx-props-no-spreading": "off",
     "implicit-arrow-linebreak": "off",
     "no-shadow": "off",
+    "react/no-array-index-key": "off",
   },
 };

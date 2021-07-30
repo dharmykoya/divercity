@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { MenuIcon } from "@heroicons/react/outline";
 import { classNames } from "../../utils/helpers/helper";
 import "./Navbar.css";
@@ -25,9 +26,13 @@ const Navbar = () => {
           )}
         >
           <div className="lg:flex justify-end items-center lg:ml-auto py-4">
-            <div className="nav-items my-4 lg:mx-5">Name</div>
-            <div className="nav-items my-4 lg:mx-5">UserName</div>
-            <div className="nav-items my-4 lg:ml-5">Logout</div>
+            <div className="my-4 lg:mx-5">Name</div>
+            <div className="my-4 lg:mx-5">UserName</div>
+            <div className="my-4 lg:ml-5">Logout</div>
+            <div className="grid lg:flex lg:ml-5">
+              <Link to="/login" className="my-3 lg:mx-5">Login</Link>
+              <Link to="/register" className="my-3 lg:ml-5">Register</Link>
+            </div>
           </div>
         </nav>
       </div>
