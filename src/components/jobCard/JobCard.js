@@ -9,12 +9,14 @@ import Button from "../button/Button";
 import "./JobCard.css";
 
 const JobCard = ({
+  jobId,
   jobTitle,
   jobLocation,
   jobCompany,
   jobType,
   applicantCount,
   jobTags,
+  handleApply,
 }) => (
   <div className="job-card shadow-md transform duration-300 px-6 py-8 border border-black-300 rounded-lg hover:-translate-y-1">
     <div>
@@ -36,7 +38,7 @@ const JobCard = ({
         <div>
           <LocationMarkerIcon className="h-5 w-5 text-black mr-2" />
         </div>
-        <span>{jobLocation}</span>
+        <span className="truncate">{jobLocation}</span>
       </div>
       <div className="flex items-center">
         <PaperClipIcon className="h-5 w-5 text-black mr-2" />
@@ -54,7 +56,7 @@ const JobCard = ({
     <div className="text-right">
       <Button
         buttonText="Apply"
-        handleClick={() => {}}
+        handleClick={(e) => handleApply(e, jobId)}
         customClass="bg-blue-500 text-white text-base font-bold px-6 py-3 rounded-lg"
       />
     </div>
@@ -66,12 +68,14 @@ JobCard.defaultProps = {
 };
 
 JobCard.propTypes = {
+  jobId: PropTypes.number.isRequired,
   jobTitle: PropTypes.string.isRequired,
   jobLocation: PropTypes.string,
   jobCompany: PropTypes.string.isRequired,
   jobType: PropTypes.string.isRequired,
   applicantCount: PropTypes.number.isRequired,
   jobTags: PropTypes.string.isRequired,
+  handleApply: PropTypes.func.isRequired,
 };
 
 export default JobCard;

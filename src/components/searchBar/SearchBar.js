@@ -14,7 +14,7 @@ const SearchBar = ({ searchValue, handleSearch, handleSearchValue }) => (
     <Button
       buttonText="search"
       submitType
-      handleClick={() => handleSearch(searchValue)}
+      handleClick={(e) => handleSearch(e)}
       customClass="bg-blue-500 text-white text-xl font-bold px-6 py-2 rounded-md"
     />
   </form>

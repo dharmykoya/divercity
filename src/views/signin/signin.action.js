@@ -6,6 +6,7 @@ import {
   USER_LOGIN_FAIL,
   USER_LOGIN_SUCCESS,
   USER_RELOAD_SUCCESS,
+  USER_LOGOUT,
 } from "../../store/actionTypes";
 
 export const userLoginStart = () => ({
@@ -25,6 +26,10 @@ export const userLoginFailed = (authError) => ({
 export const reloadSessionSuccess = (data) => ({
   type: USER_RELOAD_SUCCESS,
   data,
+});
+
+export const userLogout = () => ({
+  type: USER_LOGOUT,
 });
 
 export const authLogin = (userDetail, history, previousLocation) =>
@@ -63,4 +68,13 @@ export const reloadSession = (user) => async (dispatch) => {
   } catch (error) {
     dispatch(userLoginFailed("error"));
   }
+};
+
+export const logout = () => {
+  // remove token
+  localStorage.removeItem("username");
+  localStorage.removeItem("token");
+  return (dispatch) => {
+    dispatch(userLogout());
+  };
 };

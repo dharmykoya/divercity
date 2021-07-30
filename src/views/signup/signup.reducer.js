@@ -7,6 +7,7 @@ import {
   USER_LOGIN_FAIL,
   USER_LOGIN_SUCCESS,
   USER_RELOAD_SUCCESS,
+  USER_LOGOUT,
 } from "../../store/actionTypes";
 
 const initialState = {
@@ -70,6 +71,15 @@ const reloadSessionSuccess = (state, action) => {
   });
 };
 
+const logout = (state) => updateObject(state, {
+  error: null,
+  token: null,
+  loading: false,
+  username: null,
+  isAuthenticated: false,
+  message: null,
+});
+
 const authentication = (state = initialState, action) => {
   switch (action.type) {
     case USER_SIGNUP_START:
@@ -86,6 +96,8 @@ const authentication = (state = initialState, action) => {
       return loginFail(state, action);
     case USER_RELOAD_SUCCESS:
       return reloadSessionSuccess(state, action);
+    case USER_LOGOUT:
+      return logout(state);
 
     default:
       return state;
