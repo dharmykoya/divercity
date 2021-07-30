@@ -81,6 +81,7 @@ const AuthInput = ({
 AuthInput.defaultProps = {
   requestError: [],
   showPassword: false,
+  touched: false,
   error: "",
   handleShowPassword: () => {},
 };
@@ -93,7 +94,7 @@ AuthInput.propTypes = {
   handleBlur: PropTypes.func.isRequired,
   error: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
-  touched: PropTypes.bool.isRequired,
+  touched: PropTypes.bool,
   value: PropTypes.string.isRequired,
   inputType: PropTypes.string.isRequired,
   requestError: PropTypes.array,
