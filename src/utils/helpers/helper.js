@@ -10,3 +10,21 @@ export const isEmpty = (value) =>
   || (typeof value === "string" && value.trim().length === 0);
 
 export const classNames = (...classes) => classes.filter(Boolean).join(" ");
+
+export const getUser = () => {
+  const token = JSON.parse(localStorage.getItem("token"));
+  const username = JSON.parse(localStorage.getItem("username"));
+  const result = {
+    token,
+    username,
+  };
+  return result;
+};
+
+export const checkAuth = () => {
+  const user = JSON.parse(localStorage.getItem("username"));
+  const token = JSON.parse(localStorage.getItem("token"));
+  if (!user) return false;
+  if (!token) return false;
+  return true;
+};

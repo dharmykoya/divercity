@@ -5,6 +5,7 @@ import {
   USER_LOGIN_START,
   USER_LOGIN_FAIL,
   USER_LOGIN_SUCCESS,
+  USER_RELOAD_SUCCESS,
 } from "../../store/actionTypes";
 
 export const userLoginStart = () => ({
@@ -21,8 +22,12 @@ export const userLoginFailed = (authError) => ({
   authError,
 });
 
-export const authLogin = (userDetail, history, previousLocation) =>
+export const reloadSessionSuccess = (data) => ({
+  type: USER_RELOAD_SUCCESS,
+  data,
+});
 
+export const authLogin = (userDetail, history, previousLocation) =>
   async (dispatch) => {
     dispatch(userLoginStart());
 
@@ -30,6 +35,7 @@ export const authLogin = (userDetail, history, previousLocation) =>
       .then(async (response) => {
         const { token } = response;
         localStorage.setItem("token", JSON.stringify(token));
+        localStorage.setItem("username", JSON.stringify(userDetail.username));
         const data = {
           token,
           username: userDetail.username,
@@ -49,3 +55,12 @@ export const authLogin = (userDetail, history, previousLocation) =>
         dispatch(userLoginFailed("username/password incorrect"));
       });
   };
+
+export const reloadSession = (user) => async (dispatch) => {
+  try {
+    // const user = await getUser();
+    dispatch(reloadSessionSuccess(user));
+  } catch (error) {
+    dispatch(userLoginFailed("error"));
+  }
+};
