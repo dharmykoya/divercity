@@ -1,5 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router, Switch, Route, useLocation,
+} from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
 import { checkAuth, getUser } from "./utils/helpers/helper";
@@ -17,6 +19,21 @@ if (localStorage.token) {
   }
 }
 
+function NoMatch() {
+  const location = useLocation();
+
+  return (
+    <div className="mt-60">
+      <div className="text-center m-auto">
+        <p className="text-4xl mb-2">No match for</p>
+        <code className="text-4xl my-10">{location.pathname}</code>
+        <br />
+        <h3 className="text-8xl text-gray-500 mt-10">404</h3>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   return (
     <Router>
@@ -31,6 +48,9 @@ function App() {
           </Route>
           <Route path="/login" exact>
             <Signin />
+          </Route>
+          <Route path="*">
+            <NoMatch />
           </Route>
         </Switch>
       </div>

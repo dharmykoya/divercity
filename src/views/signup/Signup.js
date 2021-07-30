@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/button/Button";
 import AuthInput from "../../components/input/AuthInput";
 import { nameValidation, checkNull } from "../../utils/helpers/validation";
 import "./Signup.css";
 import { authSignup } from "./signup.action";
-import { errorMessage } from "../signin/signin.selector";
+import { errorMessage, isAuthenticated } from "../signin/signin.selector";
 
 const initialValues = {
   username: "",
@@ -24,6 +24,7 @@ const Signup = () => {
   const history = useHistory();
 
   const authError = useSelector(errorMessage());
+  const userAuthenticated = useSelector(isAuthenticated());
 
   const validate = {
     username: checkNull,
@@ -95,6 +96,10 @@ const Signup = () => {
       dispatch(authSignup(values, history));
     }
   };
+
+  if (userAuthenticated) {
+    return <Redirect to="/" />;
+  }
   return (
     <div className="my-10">
       <section>
