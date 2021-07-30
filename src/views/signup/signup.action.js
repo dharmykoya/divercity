@@ -6,6 +6,7 @@ import {
   USER_SIGNUP_SUCCESS,
   USER_SIGNUP_START,
 } from "../../store/actionTypes";
+import { toastSuccess } from "../../utils/helpers/helper";
 
 export const userSignupStart = () => ({
   type: USER_SIGNUP_START,
@@ -22,17 +23,13 @@ export const userSignupFailed = (authError) => ({
 
 export const authSignup = (userDetails, history) => (dispatch) => {
   dispatch(userSignupStart());
-  const userDetails = {
-    email: "mikegreat",
-    password: "",
-  };
   return registerUser(userDetails)
     .then(async () => {
       dispatch(userSignupSuccess());
+      toastSuccess("Login Successful");
       history.push("/login");
     })
-    .catch((error) => {
-      console.log(89, error.data);
+    .catch(() => {
       // Promise.resolve(error.data).then((err) => {
       //   console.log(87, err);
       //   dispatch(userSignupFailed(err));

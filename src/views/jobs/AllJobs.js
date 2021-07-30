@@ -8,6 +8,7 @@ import SearchBar from "../../components/searchBar/SearchBar";
 import Spinner from "../../components/spinner/Spinner";
 import { toastSuccess } from "../../utils/helpers/helper";
 import { checkNull } from "../../utils/helpers/validation";
+import { isAuthenticated } from "../signin/signin.selector";
 import { fetchAllJobs, jobApplication, searchJobs } from "./Jobs.action";
 import { allJobs, isLoading, jobApplicationSuccessful } from "./jobs.selector";
 
@@ -29,6 +30,7 @@ const AllJobs = () => {
   const dispatch = useDispatch();
   const jobs = useSelector(allJobs());
   const loading = useSelector(isLoading());
+  const isUserAuthenticated = useSelector(isAuthenticated());
   const isApplicationSuccessful = useSelector(jobApplicationSuccessful());
 
   useEffect(() => {
@@ -168,7 +170,7 @@ const AllJobs = () => {
         )}
       </div>
       <div>
-        <Modal open={modalOpen} onClose={handleCloseModal} modalClass="w-4/6">
+        <Modal open={modalOpen} onClose={handleCloseModal} modalClass="w-3/6">
           <JobApplication
             job={selectedJob}
             closeModalHandler={handleCloseModal}
@@ -178,6 +180,7 @@ const AllJobs = () => {
             handleBlur={handleBlur}
             handleChange={handleChange}
             errors={errors}
+            isAuthenticated={isUserAuthenticated}
           />
         </Modal>
       </div>

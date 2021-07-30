@@ -8,6 +8,7 @@ import {
   USER_RELOAD_SUCCESS,
   USER_LOGOUT,
 } from "../../store/actionTypes";
+import { toastSuccess } from "../../utils/helpers/helper";
 
 export const userLoginStart = () => ({
   type: USER_LOGIN_START,
@@ -46,6 +47,7 @@ export const authLogin = (userDetail, history, previousLocation) =>
           username: userDetail.username,
         };
         await dispatch(userLoginSuccess(data));
+        toastSuccess("Login Successful");
         if (previousLocation) {
           setTimeout(() => {
             history.push(previousLocation);
