@@ -4,6 +4,7 @@ const api = {
   },
   authentication: {
     register: "register",
+    login: "login",
   },
 };
 

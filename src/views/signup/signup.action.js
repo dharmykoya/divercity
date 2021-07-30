@@ -22,14 +22,21 @@ export const userSignupFailed = (authError) => ({
 
 export const authSignup = (userDetails, history) => (dispatch) => {
   dispatch(userSignupStart());
+  const userDetails = {
+    email: "mikegreat",
+    password: "",
+  };
   return registerUser(userDetails)
     .then(async () => {
       dispatch(userSignupSuccess());
       history.push("/login");
     })
     .catch((error) => {
-      Promise.resolve(error.data).then((err) => {
-        dispatch(userSignupFailed(err));
-      });
+      console.log(89, error.data);
+      // Promise.resolve(error.data).then((err) => {
+      //   console.log(87, err);
+      //   dispatch(userSignupFailed(err));
+      // });
+      dispatch(userSignupFailed("Invalid credentials provided"));
     });
 };

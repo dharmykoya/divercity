@@ -4,18 +4,16 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/button/Button";
 import AuthInput from "../../components/input/AuthInput";
-import { nameValidation, checkNull } from "../../utils/helpers/validation";
-import "./Signup.css";
-import { authSignup } from "./signup.action";
-import { errorMessage } from "../signin/signin.selector";
+import { checkNull } from "../../utils/helpers/validation";
+import { authLogin } from "./signin.action";
+import { errorMessage } from "./signin.selector";
 
 const initialValues = {
   username: "",
   password: "",
-  name: "",
 };
 
-const Signup = () => {
+const Signin = () => {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
@@ -28,7 +26,6 @@ const Signup = () => {
   const validate = {
     username: checkNull,
     password: checkNull,
-    name: nameValidation,
   };
   const showPasswordHandler = () => {
     setShowPassword(!showPassword);
@@ -92,7 +89,7 @@ const Signup = () => {
         === Object.values(values).length
       && Object.values(formValidation.touched).every((t) => t === true)
     ) {
-      dispatch(authSignup(values, history));
+      dispatch(authLogin(values, history));
     }
   };
   return (
@@ -101,13 +98,13 @@ const Signup = () => {
         <div>
           <div className="md:w-3/6 lg:w-1/3 mx-auto signup-form px-6 lg:px-10 py-12">
             <div className="mb-10 text-center">
-              <h3 className="text-4xl text-black-500 font-bold">
-                Get Remote Jobs
-              </h3>
+              <h3 className="text-4xl text-black-500 font-bold">Welcome!</h3>
               {authError ? (
                 <h5 className="text-white bg-red-500 py-3 my-6">{authError}</h5>
               ) : (
-                <h5 className="my-5 font-bold">Get Matched in two weeks.</h5>
+                <h5 className="font-bold my-5">
+                  Login using your account details.
+                </h5>
               )}
             </div>
             <AuthInput
@@ -126,20 +123,6 @@ const Signup = () => {
             />
 
             <AuthInput
-              label="Name"
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Name"
-              touched={touched?.name}
-              value={values?.name}
-              handleBlur={handleBlur}
-              handleChange={handleChange}
-              error={errors?.name}
-              inputType="text"
-              requestError={[]}
-            />
-            <AuthInput
               label="Password"
               type={showPassword ? "text" : "password"}
               name="password"
@@ -157,7 +140,7 @@ const Signup = () => {
             />
             <div className="my-6">
               <Button
-                buttonText="Sign up"
+                buttonText="Sign in"
                 handleClick={handleSubmit}
                 customClass="bg-blue-500 text-white py-4 w-full"
               />
@@ -168,9 +151,9 @@ const Signup = () => {
               </Link>
             </div>
             <div className="mb-6">
-              Already have an Account?
-              <Link to="/login" className="ml-2 text-blue-800">
-                Login Now
+              Need An Account?
+              <Link to="/register" className="ml-2 text-blue-800">
+                Sign Up Now
               </Link>
             </div>
           </div>
@@ -180,4 +163,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Signin;

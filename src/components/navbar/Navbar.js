@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="App">
         <div className="lg:hidden">
           <MenuIcon
-            className="h-20 w-20 ml-auto"
+            className="h-20 w-20 ml-auto cursor-pointer"
             data-testid="menu"
             onClick={toggleNavbar}
           />
@@ -30,8 +30,12 @@ const Navbar = () => {
             <div className="my-4 lg:mx-5">UserName</div>
             <div className="my-4 lg:ml-5">Logout</div>
             <div className="grid lg:flex lg:ml-5">
-              <Link to="/login" className="my-3 lg:mx-5">Login</Link>
-              <Link to="/register" className="my-3 lg:ml-5">Register</Link>
+              <Link to="/login" className="my-3 lg:mx-5">
+                Login
+              </Link>
+              <Link to="/register" className="my-3 lg:ml-5">
+                Register
+              </Link>
             </div>
           </div>
         </nav>
