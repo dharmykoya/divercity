@@ -125,11 +125,11 @@ const JobApplication = ({
           </div>
         </>
       ) : (
-        <div className="my-6 text-center text-2xl">
+        <div className="my-6 text-center text-2xl" data-testid="loginToApply">
           Please
-          {" "}
-          <Link to="/login" className="text-blue-500">Login</Link>
-          {" "}
+          <Link to="/login" className="text-blue-500">
+            Login
+          </Link>
           to apply for this position.
         </div>
       )}
