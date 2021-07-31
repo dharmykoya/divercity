@@ -69,11 +69,6 @@ const AuthInput = ({
         </div>
       </div>
       <div className="text-start text-red-500">{error}</div>
-      {/* {requestError?.map((err, index) => (
-        <div key={index + 1} className="text-start text-danger text-10">
-          {err}
-        </div>
-      ))} */}
     </div>
   );
 };
