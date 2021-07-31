@@ -112,55 +112,58 @@ const Signin = () => {
                 </h5>
               )}
             </div>
-            <AuthInput
-              label="Username"
-              type="text"
-              name="username"
-              id="username"
-              placeholder="Username"
-              touched={touched?.username}
-              value={values?.username}
-              handleBlur={handleBlur}
-              handleChange={handleChange}
-              error={errors?.username}
-              inputType="text"
-              requestError={[]}
-            />
-
-            <AuthInput
-              label="Password"
-              type={showPassword ? "text" : "password"}
-              name="password"
-              id="password"
-              placeholder="Password"
-              touched={touched?.password}
-              value={values?.password}
-              handleBlur={handleBlur}
-              handleChange={handleChange}
-              error={errors?.password}
-              inputType="password"
-              showPassword={showPassword}
-              handleShowPassword={showPasswordHandler}
-              requestError={null}
-            />
-            <div className="my-6">
-              <Button
-                buttonText="Sign in"
-                handleClick={handleSubmit}
-                customClass="bg-blue-500 text-white py-4 w-full"
+            <form onSubmit={handleSubmit} data-testid="signinForm">
+              <AuthInput
+                label="Username"
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Username"
+                touched={touched?.username}
+                value={values?.username}
+                handleBlur={handleBlur}
+                handleChange={handleChange}
+                error={errors?.username}
+                inputType="text"
+                requestError={[]}
               />
-            </div>
-            <div className="text-start mb-6">
-              <Link to="/" className="text-blue-800">
-                Forgot your password?
-              </Link>
-            </div>
-            <div className="mb-6">
-              Need An Account?
-              <Link to="/register" className="ml-2 text-blue-800">
-                Sign Up Now
-              </Link>
-            </div>
+
+              <AuthInput
+                label="Password"
+                type={showPassword ? "text" : "password"}
+                name="password"
+                id="password"
+                placeholder="Password"
+                touched={touched?.password}
+                value={values?.password}
+                handleBlur={handleBlur}
+                handleChange={handleChange}
+                error={errors?.password}
+                inputType="password"
+                showPassword={showPassword}
+                handleShowPassword={showPasswordHandler}
+                requestError={null}
+              />
+              <div className="my-6">
+                <Button
+                  submitType
+                  buttonText="Sign in"
+                  // handleClick={handleSubmit}
+                  customClass="bg-blue-500 text-white py-4 w-full"
+                />
+              </div>
+              <div className="text-start mb-6">
+                <Link to="/" className="text-blue-800">
+                  Forgot your password?
+                </Link>
+              </div>
+              <div className="mb-6">
+                Need An Account?
+                <Link to="/register" className="ml-2 text-blue-800">
+                  Sign Up Now
+                </Link>
+              </div>
+            </form>
           </div>
         </div>
       </section>

@@ -20,11 +20,12 @@ const Button = ({
 Button.defaultProps = {
   submitType: false,
   children: "",
+  handleClick: () => {},
 };
 
 Button.propTypes = {
   buttonText: PropTypes.string.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func,
   customClass: PropTypes.string.isRequired,
   children: PropTypes.node,
   submitType: PropTypes.bool,
