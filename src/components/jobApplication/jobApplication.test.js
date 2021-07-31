@@ -1,10 +1,10 @@
 /* eslint-disable no-undef */
 import "@testing-library/jest-dom";
 import * as React from "react";
-import { render } from "@testing-library/react";
-import JobCard from "./JobCard";
+import { render } from "../../utils/test/test-utils";
+import JobApplication from "./JobApplication";
 
-test("handles clicks event", async () => {
+test("should render the job application element", async () => {
   const job = {
     id: 1,
     title: "Full Stack Developer",
@@ -14,22 +14,18 @@ test("handles clicks event", async () => {
     company: "divercity",
     job_type: "Internship",
     applicant_count: 2,
-    skills_tag: [
-      "React",
-      "Git",
-      "JavaScript",
-    ],
+    skills_tag: ["React", "Git", "JavaScript"],
   };
   const { getByText } = render(
-    <JobCard
-      jobTitle={job.title}
-      jobId={job.id}
-      jobLocation={job.location}
-      jobCompany={job.company}
-      jobType={job.job_type}
-      applicantCount={job.applicant_count}
-      jobTags={job.skills_tag.slice(0, 3).toString()}
-      handleApply={jest.fn()}
+    <JobApplication
+      job={job}
+      closeModalHandler={jest.fn()}
+      submitApplicationHandler={jest.fn()}
+      values={{}}
+      handleBlur={jest.fn()}
+      handleChange={jest.fn()}
+      errors={{}}
+      isAuthenticated={false}
     />,
   );
 
