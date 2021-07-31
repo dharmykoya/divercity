@@ -2,7 +2,8 @@
 import React from "react";
 import { render as rtlRender } from "@testing-library/react";
 import { createStore, applyMiddleware } from "redux";
-import { MemoryRouter } from 'react-router-dom';
+import { Router } from "react-router-dom";
+import { createMemoryHistory } from "history";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
@@ -19,9 +20,10 @@ function render(
   } = {},
 ) {
   function Wrapper({ children }) {
+    const history = createMemoryHistory();
     return (
       <Provider store={store}>
-        <MemoryRouter>{children}</MemoryRouter>
+        <Router history={history}>{children}</Router>
       </Provider>
     );
   }
